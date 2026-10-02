@@ -1,0 +1,23 @@
+---
+import '@fontsource-variable/playfair-display';
+import '@fontsource-variable/karla';
+import '../styles/global.css';
+import { site } from '../data/site.js';
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{site.titre}</title>
+    <meta name="description" content={site.description} />
+    <meta property="og:title" content={site.titre} />
+    <meta property="og:description" content={site.description} />
+    <meta property="og:image" content="/images/atelier.jpg" />
+    <link rel="icon" href="/images/logo.jpg" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

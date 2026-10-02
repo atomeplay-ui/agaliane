@@ -1,0 +1,25 @@
+---
+import { site } from '../data/site.js';
+---
+
+<footer class="footer">
+  <div class="container">
+    <p>
+      {site.nom} · {site.adresse}, {site.ville} ·
+      <a href={site.telephoneLien}>{site.telephone}</a>
+    </p>
+    <p>© {new Date().getFullYear()} {site.nom}</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding-block: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--bordure);
+  }
+  .footer p {
+    margin: 0.25rem 0;
+  }
+</style>

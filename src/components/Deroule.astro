@@ -1,0 +1,54 @@
+---
+const etapes = [
+  {
+    titre: 'Réservez',
+    texte: 'Choisissez votre créneau en ligne ou par téléphone. Venez seul, en duo ou entre amis.',
+  },
+  {
+    titre: 'Créez',
+    texte: 'Sur place, choisissez chaînes, perles et apprêts, ajoutez vos pendentifs et assemblez votre bijou avec nos conseils.',
+  },
+  {
+    titre: 'Repartez',
+    texte: 'Votre création est prête : vous repartez avec un bijou unique, fait par vous.',
+  },
+];
+---
+
+<section class="section section--creme" id="deroule">
+  <div class="container">
+    <p class="surtitre centre">Comment ça marche</p>
+    <h2 class="centre">Le déroulé d’un atelier</h2>
+    <ol class="etapes">
+      {
+        etapes.map((etape, i) => (
+          <li>
+            <span class="etapes__numero">{i + 1}</span>
+            <h3>{etape.titre}</h3>
+            <p>{etape.texte}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .etapes {
+    list-style: none;
+    padding: 0;
+    margin: 3rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    text-align: center;
+  }
+  .etapes__numero {
+    font-family: var(--police-titre);
+    font-size: 2.5rem;
+    color: var(--accent);
+  }
+  .etapes h3 {
+    margin: 0.5rem 0;
+  }
+</style>

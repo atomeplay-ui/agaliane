@@ -1,0 +1,52 @@
+<section class="section" id="concept">
+  <div class="container concept">
+    <img src="/images/atelier.jpg" alt="Les créatrices d’Agaliane dans leur atelier" width="1024" height="1024" loading="lazy" />
+    <div>
+      <p class="surtitre">Le concept</p>
+      <h2>Un atelier pour fabriquer vos bijoux</h2>
+      <p>
+        Agaliane, c’est une boutique-atelier où vous venez, sur rendez-vous, créer vous-même vos bijoux. Nous sommes des
+        créatrices françaises passionnées et nous vous accompagnons à chaque étape, que vous soyez débutant ou habitué.
+      </p>
+      <p>
+        Vous avez un pendentif qui dort dans un tiroir, une breloque de famille, un souvenir de voyage ? Apportez-le :
+        nous l’intégrons à votre création pour lui offrir une seconde vie.
+      </p>
+      <ul class="concept__liste">
+        <li>Sur rendez-vous, à votre rythme</li>
+        <li>Vos propres pendentifs sont les bienvenus</li>
+        <li>Vous repartez avec une pièce unique</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .concept {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+  .concept img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+  .concept__liste {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+  }
+  .concept__liste li {
+    padding: 0.6rem 0;
+    border-top: 1px solid var(--bordure);
+    color: var(--texte-fort);
+  }
+  .concept__liste li::before {
+    content: '◆';
+    color: var(--accent);
+    margin-right: 0.75rem;
+    font-size: 0.7em;
+  }
+</style>

@@ -1,0 +1,60 @@
+---
+import { site } from '../data/site.js';
+---
+
+<header class="header">
+  <div class="container header__inner">
+    <a href="#top" class="header__logo">
+      <img src="/images/logo.jpg" alt={site.nom} width="200" height="189" />
+    </a>
+    <nav class="header__nav" aria-label="Navigation principale">
+      <a href="#concept">Le concept</a>
+      <a href="#deroule">Déroulé</a>
+      <a href="#infos">Infos pratiques</a>
+      <a href="#reservation" class="btn btn--small">Réserver</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--blanc);
+    border-bottom: 1px solid var(--bordure);
+  }
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 0.5rem;
+  }
+  .header__logo img {
+    display: block;
+    height: 64px;
+    width: auto;
+  }
+  .header__nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.5rem 1.5rem;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+  }
+  .header__nav a:not(.btn) {
+    color: var(--texte-fort);
+    text-decoration: none;
+  }
+  .header__nav a:not(.btn):hover {
+    color: var(--accent);
+  }
+  @media (max-width: 640px) {
+    .header__nav a:not(.btn) {
+      display: none;
+    }
+  }
+</style>

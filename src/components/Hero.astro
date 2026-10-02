@@ -1,0 +1,48 @@
+---
+import { site } from '../data/site.js';
+---
+
+<section class="hero" id="top">
+  <div class="container hero__inner">
+    <p class="surtitre">Atelier de bijoux · Nîmes</p>
+    <h1>Créez votre bijou, de vos propres mains</h1>
+    <p class="hero__texte">
+      Réservez un créneau à la boutique, composez votre pièce unique et ajoutez-y vos propres pendentifs.
+    </p>
+    <div class="hero__actions">
+      <a href="#reservation" class="btn">Réserver un créneau</a>
+      <a href={site.telephoneLien} class="btn btn--contour">{site.telephone}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    /* #fcfcfc = fond de l'image hero.png */
+    background: #fcfcfc url('/images/hero.png') right center / cover no-repeat;
+  }
+  .hero__inner {
+    padding-block: clamp(4rem, 12vw, 9rem);
+  }
+  .hero h1 {
+    max-width: 14ch;
+    font-size: clamp(2.4rem, 6vw, 4.4rem);
+    line-height: 1.1;
+    margin: 0 0 1.5rem;
+  }
+  .hero__texte {
+    max-width: 38ch;
+    font-size: 1.1rem;
+  }
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  @media (max-width: 800px) {
+    .hero {
+      background-image: none;
+    }
+  }
+</style>

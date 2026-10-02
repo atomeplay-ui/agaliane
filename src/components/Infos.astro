@@ -1,0 +1,46 @@
+---
+import { site } from '../data/site.js';
+---
+
+<section class="section section--creme" id="infos">
+  <div class="container">
+    <p class="surtitre centre">Infos pratiques</p>
+    <h2 class="centre">Nous trouver</h2>
+    <div class="infos">
+      <div>
+        <h3>Adresse</h3>
+        <address>
+          {site.adresse}<br />
+          {site.ville}
+        </address>
+        <p><a href={site.carte} target="_blank" rel="noopener">Voir sur la carte</a></p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p>
+          <a href={site.telephoneLien}>{site.telephone}</a><br />
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </p>
+      </div>
+      <div>
+        <h3>Horaires & tarifs</h3>
+        <p>{site.horaires}</p>
+        <p>{site.tarifs}</p>
+        <p>{site.duree}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .infos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    text-align: center;
+  }
+  address {
+    font-style: normal;
+  }
+</style>

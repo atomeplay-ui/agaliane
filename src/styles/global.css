@@ -1,0 +1,106 @@
+/* Styles communs à tout le site. Les styles propres à une section sont dans son composant. */
+
+:root {
+  --blanc: #fff;
+  --creme: #fffaf5;
+  --texte: #555;
+  --texte-fort: #222;
+  --accent: #a8703f;
+  --accent-fonce: #372515;
+  --bordure: #ece4dc;
+  --police-titre: 'Playfair Display Variable', Georgia, serif;
+  --police-texte: 'Karla Variable', system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px; /* hauteur de l'en-tête collant */
+}
+
+body {
+  margin: 0;
+  background: var(--blanc);
+  color: var(--texte);
+  font-family: var(--police-texte);
+  font-size: 1rem;
+  line-height: 1.7;
+  letter-spacing: 0.3px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--police-titre);
+  font-weight: 500;
+  color: var(--texte-fort);
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  margin: 0 0 1.5rem;
+}
+
+a {
+  color: var(--accent);
+}
+
+.container {
+  width: min(1100px, 100% - 2rem);
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: clamp(3rem, 8vw, 6rem);
+}
+
+.section--creme {
+  background: var(--creme);
+}
+
+.centre {
+  text-align: center;
+}
+
+.surtitre {
+  margin: 0 0 0.75rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.8rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.75rem;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  color: var(--blanc);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.btn:hover {
+  background: var(--accent-fonce);
+  border-color: var(--accent-fonce);
+  color: var(--blanc);
+}
+
+.btn--contour {
+  background: transparent;
+  color: var(--accent);
+}
+
+.btn--small {
+  padding: 0.5rem 1rem;
+}

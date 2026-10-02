@@ -1,0 +1,28 @@
+---
+import { site, simplybook } from '../data/site.js';
+---
+
+<section class="section" id="reservation">
+  <div class="container">
+    <p class="surtitre centre">Réservation</p>
+    <h2 class="centre">Choisissez votre créneau</h2>
+    <p class="centre">
+      Vous préférez réserver de vive voix ? Appelez-nous au
+      <a href={site.telephoneLien}>{site.telephone}</a>.
+    </p>
+    <div class="reservation__widget">
+      <!-- Le widget SimplyBook insère son iframe à l'emplacement de ce script. Config dans src/data/site.js -->
+      <script is:inline src="https://widget.simplybook.it/v2/widget/widget.js"></script>
+      <script is:inline define:vars={{ simplybook }}>
+        new SimplybookWidget(simplybook);
+      </script>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reservation__widget {
+    margin-top: 2rem;
+    min-height: 400px;
+  }
+</style>
