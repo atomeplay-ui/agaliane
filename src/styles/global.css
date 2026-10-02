@@ -18,8 +18,10 @@
   --accent-fonce: var(--brun);
   --decor: var(--dore); /* trop clair pour du texte courant : décor uniquement */
   --bordure: var(--beige);
-  --police-titre: 'Playfair Display Variable', Georgia, serif;
-  --police-texte: 'Karla Variable', system-ui, sans-serif;
+  /* Cambria n'existe que sur Windows et Mac avec Office : ailleurs (téléphones),
+     Caladea prend le relais, elle a les mêmes proportions. */
+  --police-titre: Cambria, Caladea, Georgia, serif;
+  --police-texte: Cambria, Caladea, Georgia, serif;
 }
 
 *,
@@ -38,18 +40,16 @@ body {
   background: var(--blanc);
   color: var(--texte);
   font-family: var(--police-texte);
-  font-size: 1rem;
-  line-height: 1.7;
-  letter-spacing: 0.3px;
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
 h1,
 h2,
 h3 {
   font-family: var(--police-titre);
-  font-weight: 500;
+  font-weight: 700;
   color: var(--texte-fort);
-  letter-spacing: 1px;
   line-height: 1.2;
 }
 
