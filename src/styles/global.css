@@ -1,13 +1,23 @@
 /* Styles communs à tout le site. Les styles propres à une section sont dans son composant. */
 
 :root {
+  /* Palette de la marque */
+  --noir: #000000;
+  --beige: #e8c6a5;
+  --terracotta: #8b5a3c;
+  --brun: #3a2a21;
+  --dore: #d4a44a;
+  --rose: #f2d1c2;
+
+  /* Rôles dans le site */
   --blanc: #fff;
-  --creme: #fffaf5;
-  --texte: #555;
-  --texte-fort: #222;
-  --accent: #a8703f;
-  --accent-fonce: #372515;
-  --bordure: #ece4dc;
+  --creme: color-mix(in srgb, var(--rose) 40%, white); /* fond des sections alternées */
+  --texte: var(--brun);
+  --texte-fort: var(--noir);
+  --accent: var(--terracotta);
+  --accent-fonce: var(--brun);
+  --decor: var(--dore); /* trop clair pour du texte courant : décor uniquement */
+  --bordure: var(--beige);
   --police-titre: 'Playfair Display Variable', Georgia, serif;
   --police-texte: 'Karla Variable', system-ui, sans-serif;
 }
