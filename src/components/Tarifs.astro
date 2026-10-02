@@ -1,0 +1,94 @@
+---
+import { site, tarifs } from '../data/site.js';
+---
+
+<section class="section" id="tarifs">
+  <div class="container">
+    <p class="surtitre centre">Tarifs</p>
+    <h2 class="centre">L’atelier de création</h2>
+    <p class="centre">Durée d’un atelier : <strong class="tarifs__duree">{site.duree}</strong></p>
+    <div class="tarifs">
+      {
+        tarifs.map((carte) => (
+          <article class="tarifs__carte">
+            <h3>{carte.titre}</h3>
+            {carte.groupes?.map((groupe) => (
+              <>
+                <h4>{groupe.nom}</h4>
+                <ul>
+                  {groupe.lignes.map((ligne) => (
+                    <li>
+                      <span>{ligne.nom}</span>
+                      <span class="tarifs__prix">{ligne.prix}</span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ))}
+            {carte.note && <p class="tarifs__note">{carte.note}</p>}
+          </article>
+        ))
+      }
+    </div>
+    <p class="centre"><a href="#reservation" class="btn">Réserver un créneau</a></p>
+  </div>
+</section>
+
+<style>
+  .tarifs__duree {
+    display: inline-block;
+    padding: 0.1rem 0.9rem;
+    border-radius: 999px;
+    background: var(--brun);
+    color: var(--blanc);
+    font-family: var(--police-titre);
+    font-size: 1.2rem;
+  }
+  .tarifs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    margin-block: 2.5rem;
+  }
+  .tarifs__carte {
+    padding: 0 1.5rem 1.5rem;
+    background: var(--creme);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .tarifs__carte h3 {
+    margin: 0 -1.5rem 1.5rem;
+    padding: 0.8rem 1.5rem;
+    background: var(--brun);
+    color: var(--blanc);
+    text-align: center;
+    font-size: 1.3rem;
+  }
+  .tarifs__carte h4 {
+    margin: 1rem 0 0.25rem;
+    color: var(--brun);
+    font-size: 1rem;
+  }
+  .tarifs__carte ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .tarifs__carte li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.35rem 0;
+    border-bottom: 1px dotted var(--terracotta);
+    font-style: italic;
+  }
+  .tarifs__prix {
+    font-style: normal;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .tarifs__note {
+    text-align: center;
+    font-size: 1.1rem;
+  }
+</style>

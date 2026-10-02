@@ -14,11 +14,35 @@ export const site = {
   ville: '30000 Nîmes',
   carte: 'https://www.google.com/maps/search/?api=1&query=7+rue+Sainte-Eug%C3%A9nie+30000+N%C3%AEmes',
 
-  // À COMPLÉTER : horaires, tarifs et durée réels.
+  // À COMPLÉTER : horaires réels.
   horaires: 'Sur rendez-vous uniquement — horaires communiqués prochainement.',
-  tarifs: 'Tarifs communiqués prochainement.',
-  duree: 'Durée d’un atelier communiquée prochainement.',
+  duree: '2 h',
 };
+
+// Tarifs des ateliers de création.
+export const tarifs = [
+  {
+    titre: 'Perles fantaisies',
+    groupes: [
+      {
+        nom: 'Collier',
+        lignes: [
+          { nom: 'Ras de cou', prix: '25 €' },
+          { nom: 'Standard', prix: '35 €' },
+          { nom: 'Sautoir', prix: '45 €' },
+        ],
+      },
+      {
+        nom: 'Bracelet et boucles d’oreilles',
+        lignes: [{ nom: 'Prix unique', prix: '25 €' }],
+      },
+    ],
+  },
+  {
+    titre: 'Perles semi-précieuses',
+    note: 'À partir de 19 € + le prix des perles',
+  },
+];
 
 // Widget de réservation SimplyBook.
 // À CHANGER : "url" pointe vers le compte de test (tomtest123).
@@ -35,7 +59,7 @@ export const simplybook = {
     sb_base_color: '#3a2a21',
     display_item_mode: 'block',
     booking_nav_bg_color: '#3a2a21',
-    body_bg_color: '#ffffff',
+    body_bg_color: '#faede7', // = fond de la section (--creme)
     sb_review_image: '',
     dark_font_color: '#3a2a21',
     light_font_color: '#ffffff',
