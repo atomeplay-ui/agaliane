@@ -1,11 +1,13 @@
 ---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
 import { site } from '../data/site.js';
 ---
 
 <header class="header">
   <div class="container header__inner">
     <a href="#top" class="header__logo">
-      <img src="/images/logo.jpg" alt={site.nom} width="200" height="189" />
+      <Image src={logo} alt={site.nom} width={176} height={176} loading="eager" />
     </a>
     <nav class="header__nav" aria-label="Navigation principale">
       <a href="#prestations">Prestations</a>
@@ -34,7 +36,7 @@ import { site } from '../data/site.js';
   }
   .header__logo img {
     display: block;
-    height: 64px;
+    height: 88px;
     width: auto;
   }
   .header__nav {

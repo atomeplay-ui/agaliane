@@ -2,7 +2,11 @@
 import '@fontsource-variable/playfair-display';
 import '@fontsource-variable/karla';
 import '../styles/global.css';
+import { getImage } from 'astro:assets';
+import logo from '../assets/logo.png';
 import { site } from '../data/site.js';
+
+const favicon = await getImage({ src: logo, width: 96, height: 96, format: 'png' });
 ---
 
 <!doctype html>
@@ -15,7 +19,7 @@ import { site } from '../data/site.js';
     <meta property="og:title" content={site.titre} />
     <meta property="og:description" content={site.description} />
     <meta property="og:image" content="/images/atelier.jpg" />
-    <link rel="icon" href="/images/logo.jpg" />
+    <link rel="icon" type="image/png" href={favicon.src} />
   </head>
   <body>
     <slot />
