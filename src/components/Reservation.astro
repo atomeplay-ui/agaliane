@@ -10,28 +10,15 @@ import { site, simplybook } from '../data/site.js';
     <p class="centre">
       <a href={site.telephoneLien} class="btn">{site.telephone}</a>
     </p>
-    <!-- Le widget SimplyBook dépose des traceurs : il n'est chargé qu'après le clic du visiteur (consentement). -->
-    <div class="reservation__widget" id="sb-widget">
-      <div class="reservation__consentement">
-        <p>
-          Le calendrier de réservation est fourni par SimplyBook.me, qui dépose des cookies, notamment de mesure
-          d’audience. En l’affichant, vous acceptez ces cookies.{' '}
-          <a href="/confidentialite">En savoir plus</a>
-        </p>
-        <button type="button" class="btn" id="sb-afficher">Afficher le calendrier</button>
-      </div>
+    <div class="reservation__widget">
+      <!-- Le widget SimplyBook insère son iframe à l'emplacement de ce script. Config dans src/data/site.js -->
+      <script is:inline src="https://widget.simplybook.it/v2/widget/widget.js"></script>
+      <script is:inline define:vars={{ simplybook }}>
+        new SimplybookWidget(simplybook);
+      </script>
     </div>
   </div>
 </section>
-
-<script is:inline define:vars={{ simplybook }}>
-  document.getElementById('sb-afficher').addEventListener('click', () => {
-    const script = document.createElement('script');
-    script.src = 'https://widget.simplybook.it/v2/widget/widget.js';
-    script.onload = () => new SimplybookWidget({ ...simplybook, container_id: 'sb-widget' });
-    document.head.append(script);
-  });
-</script>
 
 <style>
   #reservation {
@@ -40,18 +27,6 @@ import { site, simplybook } from '../data/site.js';
   .reservation__widget {
     margin-top: 2rem;
     overflow: hidden;
-  }
-  .reservation__consentement {
-    max-width: 560px;
-    margin-inline: auto;
-    padding: 2rem;
-    background: var(--blanc);
-    border-radius: 12px;
-    text-align: center;
-  }
-  .reservation__consentement .btn {
-    cursor: pointer;
-    font-family: inherit;
   }
   /* L'iframe est sur le domaine SimplyBook, on ne peut pas la styler de l'intérieur :
      on décale vers le haut pour cacher son en-tête (92 px, menu vide). */

@@ -29,8 +29,8 @@ export const legal = {
   rcs: '', // ex. 'RCS Nîmes 123 456 789' ou 'RNE' — selon l'immatriculation
   tva: '[À COMPLÉTER : n° de TVA intracommunautaire, ou « TVA non applicable, art. 293 B du CGI »]',
   directeurPublication: '[À COMPLÉTER : nom et prénom]',
-  paiement: '[À COMPLÉTER : moyens de paiement acceptés et moment du paiement (ex. sur place, le jour de l’atelier, par carte ou espèces)]',
-  annulation: '[À COMPLÉTER : conditions d’annulation et de report (ex. annulation gratuite jusqu’à 48 h avant l’atelier)]',
+  paiement: 'Le paiement s’effectue sur place, à la boutique, le jour de l’atelier.',
+  annulation: 'L’annulation est gratuite jusqu’à 48 heures avant le début de l’atelier, par téléphone ou par e-mail.',
   mediateur: '[À COMPLÉTER : nom, adresse et site internet du médiateur de la consommation]',
   miseAJour: '5 octobre 2026',
 };
