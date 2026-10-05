@@ -1,0 +1,36 @@
+---
+import Legal from '../layouts/Legal.astro';
+import { site, legal } from '../data/site.js';
+---
+
+<Legal titre="Mentions légales">
+  <h2>Éditeur du site</h2>
+  <p>
+    {legal.raisonSociale}<br />
+    {legal.formeJuridique}<br />
+    {legal.capital && <>{legal.capital}<br /></>}
+    Siège : {site.adresse}, {site.ville}<br />
+    SIRET : {legal.siret}<br />
+    {legal.rcs && <>{legal.rcs}<br /></>}
+    TVA : {legal.tva}<br />
+    Téléphone : <a href={site.telephoneLien}>{site.telephone}</a><br />
+    E-mail : <a href={`mailto:${site.email}`}>{site.email}</a>
+  </p>
+  <p>Directeur ou directrice de la publication : {legal.directeurPublication}</p>
+
+  <h2>Hébergeur</h2>
+  <p>
+    Vercel Inc.<br />
+    440 N Barranca Ave #4133, Covina, CA 91723, États-Unis<br />
+    <a href="https://vercel.com" target="_blank" rel="noopener">vercel.com</a>
+  </p>
+
+  <h2>Propriété intellectuelle</h2>
+  <p>
+    Les textes, photographies, logos et illustrations de ce site sont la propriété de {site.nom}, sauf mention
+    contraire. Toute reproduction, totale ou partielle, sans autorisation écrite préalable est interdite.
+  </p>
+
+  <h2>Données personnelles et cookies</h2>
+  <p>Voir notre <a href="/confidentialite">politique de confidentialité et de cookies</a>.</p>
+</Legal>

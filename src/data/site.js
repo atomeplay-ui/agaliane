@@ -19,6 +19,22 @@ export const site = {
   duree: '2 h',
 };
 
+// Informations légales (pages Mentions légales, Confidentialité, Conditions de réservation).
+// Tout ce qui commence par « [À COMPLÉTER » s'affiche tel quel sur le site : à remplacer.
+export const legal = {
+  raisonSociale: '[À COMPLÉTER : nom de l’entreprise ou nom et prénom de l’entrepreneur]',
+  formeJuridique: '[À COMPLÉTER : ex. entreprise individuelle (micro-entreprise), SAS, SARL…]',
+  capital: '', // ex. 'Capital social : 1 000 €' — laisser vide pour une entreprise individuelle
+  siret: '[À COMPLÉTER : n° SIRET]',
+  rcs: '', // ex. 'RCS Nîmes 123 456 789' ou 'RNE' — selon l'immatriculation
+  tva: '[À COMPLÉTER : n° de TVA intracommunautaire, ou « TVA non applicable, art. 293 B du CGI »]',
+  directeurPublication: '[À COMPLÉTER : nom et prénom]',
+  paiement: '[À COMPLÉTER : moyens de paiement acceptés et moment du paiement (ex. sur place, le jour de l’atelier, par carte ou espèces)]',
+  annulation: '[À COMPLÉTER : conditions d’annulation et de report (ex. annulation gratuite jusqu’à 48 h avant l’atelier)]',
+  mediateur: '[À COMPLÉTER : nom, adresse et site internet du médiateur de la consommation]',
+  miseAJour: '5 octobre 2026',
+};
+
 // Tarifs des ateliers de création.
 export const tarifs = [
   {

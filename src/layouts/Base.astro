@@ -7,6 +7,8 @@ import { getImage } from 'astro:assets';
 import logo from '../assets/logo.png';
 import { site } from '../data/site.js';
 
+const { titre = site.titre } = Astro.props;
+
 const favicon = await getImage({ src: logo, width: 96, height: 96, format: 'png' });
 const apercu = await getImage({ src: logo, width: 600, height: 600, format: 'png' }); // aperçu lors d'un partage de lien
 ---
@@ -16,9 +18,9 @@ const apercu = await getImage({ src: logo, width: 600, height: 600, format: 'png
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{site.titre}</title>
+    <title>{titre}</title>
     <meta name="description" content={site.description} />
-    <meta property="og:title" content={site.titre} />
+    <meta property="og:title" content={titre} />
     <meta property="og:description" content={site.description} />
     <meta property="og:image" content={apercu.src} />
     <link rel="icon" type="image/png" href={favicon.src} />

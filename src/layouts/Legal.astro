@@ -1,0 +1,38 @@
+---
+// Mise en page des pages légales : texte simple, une colonne.
+import Base from './Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site, legal } from '../data/site.js';
+
+const { titre } = Astro.props;
+---
+
+<Base titre={`${titre} — ${site.nom}`}>
+  <Header />
+  <main class="section">
+    <article class="container legal">
+      <h1>{titre}</h1>
+      <slot />
+      <p class="legal__maj">Dernière mise à jour : {legal.miseAJour}</p>
+    </article>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .legal {
+    max-width: 760px;
+  }
+  .legal h1 {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+  }
+  .legal :global(h2) {
+    font-size: 1.4rem;
+    margin: 2.5rem 0 0.75rem;
+  }
+  .legal__maj {
+    margin-top: 3rem;
+    font-style: italic;
+  }
+</style>

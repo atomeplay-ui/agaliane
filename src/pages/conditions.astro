@@ -1,0 +1,60 @@
+---
+import Legal from '../layouts/Legal.astro';
+import { site, legal } from '../data/site.js';
+---
+
+<Legal titre="Conditions de réservation">
+  <p>
+    Les présentes conditions s’appliquent aux ateliers de création de bijoux réservés auprès de {legal.raisonSociale},
+    {site.adresse}, {site.ville} (ci-après « {site.nom} »), en ligne ou par téléphone.
+  </p>
+
+  <h2>1. Prestations</h2>
+  <p>
+    Un atelier dure {site.duree} et se déroule à la boutique, sur rendez-vous. Le participant y crée un bijou, avec
+    les fournitures proposées par {site.nom} et, s’il le souhaite, ses propres pendentifs.
+  </p>
+
+  <h2>2. Prix</h2>
+  <p>
+    Les prix sont indiqués en euros, toutes taxes comprises, dans la rubrique <a href="/#tarifs">Tarifs</a>. Le prix
+    applicable est celui affiché au moment de la réservation. Pour les perles semi-précieuses, le prix des perles
+    choisies s’ajoute au prix de l’atelier ; il est communiqué sur place avant leur utilisation.
+  </p>
+
+  <h2>3. Réservation</h2>
+  <p>
+    La réservation se fait via le calendrier en ligne ou par téléphone au
+    <a href={site.telephoneLien}>{site.telephone}</a>. Elle est ferme dès réception de la confirmation.
+  </p>
+
+  <h2>4. Paiement</h2>
+  <p>{legal.paiement}</p>
+
+  <h2>5. Annulation et report</h2>
+  <p>{legal.annulation}</p>
+
+  <h2>6. Droit de rétractation</h2>
+  <p>
+    Conformément à l’article L221-28, 12° du Code de la consommation, le droit de rétractation ne s’applique pas aux
+    prestations de loisirs fournies à une date ou selon une période déterminée. Les ateliers réservés ne bénéficient
+    donc pas du délai de rétractation de 14 jours.
+  </p>
+
+  <h2>7. Objets apportés par le participant</h2>
+  <p>
+    Les pendentifs et bijoux apportés par le participant restent sa propriété et sous sa responsabilité.
+    {site.nom} veille à les manipuler avec soin mais ne peut être tenue responsable de leur usure ou de leur fragilité
+    préexistante.
+  </p>
+
+  <h2>8. Médiation de la consommation</h2>
+  <p>
+    En cas de litige, le client peut d’abord contacter {site.nom} à <a href={`mailto:${site.email}`}>{site.email}</a>.
+    À défaut de solution amiable, il peut recourir gratuitement au médiateur de la consommation suivant :
+    {legal.mediateur}.
+  </p>
+
+  <h2>9. Données personnelles</h2>
+  <p>Voir notre <a href="/confidentialite">politique de confidentialité</a>.</p>
+</Legal>
