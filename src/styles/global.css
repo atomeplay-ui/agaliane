@@ -75,6 +75,12 @@ a {
   background: var(--creme);
 }
 
+@media (max-width: 640px) {
+  html {
+    scroll-padding-top: 80px; /* en-tête plus petit sur téléphone */
+  }
+}
+
 .centre {
   text-align: center;
 }

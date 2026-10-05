@@ -61,14 +61,13 @@ import { site } from '../data/site.js';
     width: min(340px, 30vw);
     height: auto;
   }
+  /* Sur téléphone : texte seul, comme la première version */
   @media (max-width: 700px) {
     .hero__inner {
       grid-template-columns: 1fr;
     }
     .hero__image {
-      width: min(220px, 60vw);
-      margin-inline: auto;
-      grid-row: 1;
+      display: none;
     }
   }
 </style>
