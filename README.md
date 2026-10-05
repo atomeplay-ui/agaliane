@@ -16,7 +16,7 @@ npm run build    # génère le site dans dist/
 | Une section de la page | `src/components/<Section>.astro` |
 | Ordre des sections | `src/pages/index.astro` |
 | Couleurs, polices, boutons | `src/styles/global.css` |
-| Images | `public/images/` |
+| Images (optimisées automatiquement par Astro) | `src/assets/` |
 
 ## Déploiement
 

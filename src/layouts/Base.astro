@@ -8,6 +8,7 @@ import logo from '../assets/logo.png';
 import { site } from '../data/site.js';
 
 const favicon = await getImage({ src: logo, width: 96, height: 96, format: 'png' });
+const apercu = await getImage({ src: logo, width: 600, height: 600, format: 'png' }); // aperçu lors d'un partage de lien
 ---
 
 <!doctype html>
@@ -19,7 +20,7 @@ const favicon = await getImage({ src: logo, width: 96, height: 96, format: 'png'
     <meta name="description" content={site.description} />
     <meta property="og:title" content={site.titre} />
     <meta property="og:description" content={site.description} />
-    <meta property="og:image" content="/images/atelier.jpg" />
+    <meta property="og:image" content={apercu.src} />
     <link rel="icon" type="image/png" href={favicon.src} />
   </head>
   <body>

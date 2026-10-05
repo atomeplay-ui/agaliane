@@ -1,6 +1,17 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+---
+
 <section class="section" id="concept">
   <div class="container concept">
-    <img src="/images/atelier.jpg" alt="Les créatrices d’Agaliane dans leur atelier" width="1024" height="1024" loading="lazy" />
+    <Image
+      src={logo}
+      alt="Logo Agaliane : notre concept, l’upcycling — rien ne se perd, tout se transforme"
+      width={480}
+      densities={[1, 2]}
+      class="concept__logo"
+    />
     <div>
       <p class="surtitre">Le concept</p>
       <h2>Un atelier pour fabriquer vos bijoux</h2>
@@ -28,10 +39,11 @@
     gap: clamp(2rem, 5vw, 4rem);
     align-items: center;
   }
-  .concept img {
+  .concept__logo {
     width: 100%;
+    max-width: 480px;
     height: auto;
-    border-radius: 4px;
+    margin-inline: auto;
   }
   .concept__liste {
     list-style: none;
