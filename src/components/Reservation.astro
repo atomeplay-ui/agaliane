@@ -23,7 +23,7 @@ import { site, calcom } from '../data/site.js';
       Cal.ns.atelier("ui", {
         theme: "light",
         cssVarsPerTheme: { light: { "cal-brand": calcom.couleur } },
-        hideEventTypeDetails: false,
+        hideEventTypeDetails: true, // masque le panneau de gauche (photo, nom, durée, lieu)
         layout: "month_view",
       });
     </script>
