@@ -1,0 +1,183 @@
+---
+// Formulaire de demande particulière (groupes, événements), replié par défaut.
+import { site } from '../data/site.js';
+
+const moments = ['Matin', 'Après-midi', 'Soirée'];
+const types = ['Anniversaire', 'EVJF / EVG', 'Entre amis', 'En famille', 'Entreprise / team building', 'Autre'];
+const civilites = ['Monsieur', 'Madame', 'Mx'];
+---
+
+<details class="demande">
+  <summary class="btn btn--contour">Faire une demande particulière</summary>
+
+  <form class="demande__form" id="demande-form" data-email={site.email}>
+    <p class="demande__intro">
+      Groupe nombreux, anniversaire, événement d’entreprise… Décrivez votre projet, nous vous recontactons.
+    </p>
+
+    <fieldset>
+      <legend>Information concernant la demande</legend>
+      <div class="demande__grille">
+        <label>Nombre de personnes <input type="number" name="Nombre de personnes" min="1" required /></label>
+        <label>Dont enfants (jusqu’à 12 ans) <input type="number" name="Dont enfants" min="0" /></label>
+        <label>Date souhaitée <input type="date" name="Date" required /></label>
+        <label>
+          Moment de l’événement
+          <select name="Moment">
+            <option value="">Indifférent</option>
+            {moments.map((m) => <option>{m}</option>)}
+          </select>
+        </label>
+        <label>Budget (€ par personne) <input type="number" name="Budget par personne (€)" min="0" /></label>
+        <label>
+          Type d’événement
+          <select name="Type d’événement">
+            <option value="">À préciser</option>
+            {types.map((t) => <option>{t}</option>)}
+          </select>
+        </label>
+        <label class="demande__large">
+          Information supplémentaire sur l’événement
+          <textarea name="Informations" rows="3"></textarea>
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Contact</legend>
+      <div class="demande__civilite">
+        {
+          civilites.map((c, i) => (
+            <label>
+              <input type="radio" name="Civilité" value={c} checked={i === 0} />
+              <span>{c}</span>
+            </label>
+          ))
+        }
+      </div>
+      <div class="demande__grille">
+        <label>Prénom <input type="text" name="Prénom" autocomplete="given-name" required /></label>
+        <label>Nom <input type="text" name="Nom" autocomplete="family-name" required /></label>
+        <label>Mobile <input type="tel" name="Mobile" autocomplete="tel" placeholder="06 12 34 56 78" required /></label>
+        <label>E-mail <input type="email" name="E-mail" autocomplete="email" required /></label>
+      </div>
+    </fieldset>
+
+    <button type="submit" class="btn">Envoyer la demande</button>
+    <p class="demande__note">
+      L’envoi ouvre votre messagerie avec la demande pré-remplie : il vous reste à l’envoyer. Vos informations servent
+      uniquement à répondre à votre demande (<a href="/confidentialite">confidentialité</a>).
+    </p>
+  </form>
+</details>
+
+<script is:inline>
+  // ponytail: envoi par mailto (aucun serveur). Limite : demande que le visiteur ait une messagerie configurée.
+  // Passer à un service de formulaire (ex. Web3Forms) si des demandes se perdent.
+  const form = document.getElementById('demande-form');
+  form.elements['Date'].min = new Date().toISOString().slice(0, 10);
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const lignes = [...new FormData(form)].filter(([, v]) => v).map(([k, v]) => `${k} : ${v}`);
+    location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent('Demande particulière — atelier')}&body=${encodeURIComponent(lignes.join('\n'))}`;
+  });
+</script>
+
+<style>
+  .demande {
+    margin-top: 2.5rem;
+    text-align: center;
+  }
+  .demande summary {
+    cursor: pointer;
+    list-style: none;
+  }
+  .demande summary::-webkit-details-marker {
+    display: none;
+  }
+  .demande__form {
+    max-width: 640px;
+    margin: 2rem auto 0;
+    padding: clamp(1.25rem, 4vw, 2rem);
+    background: var(--blanc);
+    border-radius: 12px;
+    text-align: left;
+  }
+  .demande__intro {
+    margin-top: 0;
+  }
+  fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0 0 1.5rem;
+  }
+  legend {
+    padding: 0;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+    color: var(--texte-fort);
+  }
+  .demande__grille {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0.9rem;
+  }
+  .demande__large {
+    grid-column: 1 / -1;
+  }
+  .demande__grille label {
+    display: grid;
+    gap: 0.25rem;
+    font-size: 0.9rem;
+  }
+  input:not([type='radio']),
+  select,
+  textarea {
+    width: 100%;
+    padding: 0.65rem 0.75rem;
+    border: 1px solid var(--bordure);
+    border-radius: 6px;
+    background: var(--blanc);
+    color: var(--texte);
+    font: inherit;
+    font-size: 1rem;
+  }
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+  .demande__civilite {
+    display: inline-flex;
+    margin-bottom: 0.9rem;
+    border: 1px solid var(--bordure);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .demande__civilite input {
+    position: absolute;
+    opacity: 0;
+  }
+  .demande__civilite span {
+    display: block;
+    padding: 0.35rem 1.1rem;
+    cursor: pointer;
+  }
+  .demande__civilite input:checked + span {
+    background: var(--brun);
+    color: var(--blanc);
+  }
+  .demande__civilite input:focus-visible + span {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
+  .demande__form .btn {
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .demande__note {
+    margin: 1rem 0 0;
+    font-size: 0.85rem;
+  }
+</style>
