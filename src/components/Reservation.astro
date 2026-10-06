@@ -1,5 +1,5 @@
 ---
-import { site, simplybook } from '../data/site.js';
+import { site, calcom } from '../data/site.js';
 ---
 
 <section class="section section--creme" id="reservation">
@@ -10,13 +10,23 @@ import { site, simplybook } from '../data/site.js';
     <p class="centre">
       <a href={site.telephoneLien} class="btn">{site.telephone}</a>
     </p>
-    <div class="reservation__widget">
-      <!-- Le widget SimplyBook insère son iframe à l'emplacement de ce script. Config dans src/data/site.js -->
-      <script is:inline src="https://widget.simplybook.it/v2/widget/widget.js"></script>
-      <script is:inline define:vars={{ simplybook }}>
-        new SimplybookWidget(simplybook);
-      </script>
-    </div>
+    <!-- Widget Cal.com (test). Config dans src/data/site.js. Le chargeur ci-dessous est le code fourni par Cal.com. -->
+    <div class="reservation__widget" id="cal-inline"></div>
+    <script is:inline define:vars={{ calcom }}>
+      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+      Cal("init", "atelier", { origin: "https://app.cal.com" });
+      Cal.ns.atelier("inline", {
+        elementOrSelector: "#cal-inline",
+        config: { layout: "month_view", useSlotsViewOnSmallScreen: "true", theme: "light" },
+        calLink: calcom.lien,
+      });
+      Cal.ns.atelier("ui", {
+        theme: "light",
+        cssVarsPerTheme: { light: { "cal-brand": calcom.couleur } },
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    </script>
   </div>
 </section>
 
@@ -26,12 +36,6 @@ import { site, simplybook } from '../data/site.js';
   }
   .reservation__widget {
     margin-top: 2rem;
-    overflow: hidden;
-  }
-  /* L'iframe est sur le domaine SimplyBook, on ne peut pas la styler de l'intérieur :
-     on décale vers le haut pour cacher son en-tête (92 px, menu vide). */
-  .reservation__widget :global(iframe) {
-    display: block;
-    margin-top: -92px;
+    min-height: 400px;
   }
 </style>

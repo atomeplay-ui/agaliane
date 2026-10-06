@@ -60,7 +60,14 @@ export const tarifs = [
   },
 ];
 
-// Widget de réservation SimplyBook.
+// Widget de réservation Cal.com (en test).
+// À CHANGER : "lien" pointe vers le compte de test.
+export const calcom = {
+  lien: 'tom-jean-pbxbvg/test',
+  couleur: '#8b5a3c', // terracotta, cf. src/styles/global.css
+};
+
+// Ancien widget SimplyBook — plus utilisé pendant le test Cal.com, gardé pour un retour arrière.
 // À CHANGER : "url" pointe vers le compte de test (tomtest123).
 export const simplybook = {
   widget_type: 'iframe',
