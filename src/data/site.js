@@ -60,45 +60,9 @@ export const tarifs = [
   },
 ];
 
-// Widget de réservation Cal.com (en test).
-// À CHANGER : "lien" pointe vers le compte de test.
+// Widget de réservation Cal.com.
+// À CHANGER : "lien" pointe vers l'événement de test (identifiant-cal.com/nom-de-l-evenement).
 export const calcom = {
   lien: 'tom-jean-pbxbvg/test',
   couleur: '#8b5a3c', // terracotta, cf. src/styles/global.css
-};
-
-// Ancien widget SimplyBook — plus utilisé pendant le test Cal.com, gardé pour un retour arrière.
-// À CHANGER : "url" pointe vers le compte de test (tomtest123).
-export const simplybook = {
-  widget_type: 'iframe',
-  url: 'https://tomtest123.simplybook.it',
-  theme: 'default',
-  theme_settings: {
-    timeline_hide_unavailable: '1',
-    hide_past_days: '0',
-    timeline_show_end_time: '0',
-    timeline_modern_display: 'as_slots',
-    // Couleurs alignées sur la palette de src/styles/global.css
-    sb_base_color: '#3a2a21',
-    display_item_mode: 'block',
-    booking_nav_bg_color: '#3a2a21',
-    body_bg_color: '#faede7', // = fond de la section (--creme)
-    sb_review_image: '',
-    dark_font_color: '#3a2a21',
-    light_font_color: '#ffffff',
-    btn_color_1: '#8b5a3c',
-    sb_company_label_color: '#3a2a21',
-    hide_img_mode: '1',
-    show_sidebar: '0',
-    sb_busy: '#c7b3b3',
-    sb_available: '#f2d1c2',
-  },
-  timeline: 'modern',
-  datepicker: 'top_calendar',
-  is_rtl: false,
-  app_config: {
-    clear_session: 0,
-    allow_switch_to_ada: 0,
-    predefined: { provider: '2', service: '2' },
-  },
 };
