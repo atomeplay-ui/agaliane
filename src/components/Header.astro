@@ -27,9 +27,11 @@ const liens = [
   </div>
 </header>
 
-<!-- Menu téléphone : panneau natif (popover) qui monte depuis le bas de l'écran. -->
+<!-- Menu téléphone : panneau natif (popover) qui descend depuis le haut de l'écran. -->
 <nav class="menu-mobile" id="menu-mobile" popover aria-label="Menu">
-  <button type="button" class="menu-mobile__poignee" popovertarget="menu-mobile" aria-label="Fermer le menu"></button>
+  <button type="button" class="menu-mobile__fermer" popovertarget="menu-mobile" aria-label="Fermer le menu">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"></path></svg>
+  </button>
   {liens.map((l) => <a href={l.href}>{l.texte}</a>)}
   <a href="/#reservation" class="btn">Réserver un créneau</a>
   <a href={site.telephoneLien} class="btn btn--contour">{site.telephone}</a>
@@ -78,15 +80,19 @@ const liens = [
   .header__nav a:not(.btn):hover {
     color: var(--accent);
   }
-  .header__menu-btn {
-    display: none;
+  .header__menu-btn,
+  .menu-mobile__fermer {
     padding: 0.4rem;
     border: 1px solid var(--bordure);
     border-radius: 6px;
     background: none;
     cursor: pointer;
   }
-  .header__menu-btn svg {
+  .header__menu-btn {
+    display: none;
+  }
+  .header__menu-btn svg,
+  .menu-mobile__fermer svg {
     display: block;
     width: 26px;
     height: 26px;
@@ -97,18 +103,18 @@ const liens = [
   }
 
   .menu-mobile {
-    /* annule le centrage par défaut des popovers : collé en bas, pleine largeur */
-    inset: auto 0 0 0;
+    /* annule le centrage par défaut des popovers : collé en haut, pleine largeur */
+    inset: 0 0 auto 0;
     width: 100%;
     max-width: none;
     margin: 0;
-    padding: 0.75rem 1.5rem 2rem;
+    padding: 1rem 1.5rem 2rem;
     border: 0;
-    border-radius: 18px 18px 0 0;
+    border-radius: 0 0 18px 18px;
     background: var(--blanc);
-    box-shadow: 0 -8px 30px rgb(0 0 0 / 0.15);
+    box-shadow: 0 8px 30px rgb(0 0 0 / 0.15);
     text-align: center;
-    translate: 0 100%;
+    translate: 0 -100%;
     transition:
       translate 0.3s ease,
       display 0.3s allow-discrete,
@@ -121,22 +127,14 @@ const liens = [
   }
   @starting-style {
     .menu-mobile:popover-open {
-      translate: 0 100%;
+      translate: 0 -100%;
     }
   }
   .menu-mobile::backdrop {
     background: rgb(0 0 0 / 0.4);
   }
-  .menu-mobile__poignee {
-    justify-self: center;
-    width: 48px;
-    height: 5px;
-    margin-bottom: 0.75rem;
-    padding: 0;
-    border: 0;
-    border-radius: 999px;
-    background: var(--bordure);
-    cursor: pointer;
+  .menu-mobile__fermer {
+    justify-self: end;
   }
   .menu-mobile a:not(.btn) {
     padding: 0.85rem 0;
