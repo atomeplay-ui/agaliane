@@ -1,14 +1,14 @@
 ---
 import { Image } from 'astro:assets';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo-simple.jpg';
 ---
 
 <section class="section" id="concept">
   <div class="container concept">
     <Image
       src={logo}
-      alt="Logo Agaliane : notre concept, l’upcycling — rien ne se perd, tout se transforme"
-      width={480}
+      alt="Logo Agaliane"
+      width={400}
       densities={[1, 2]}
       class="concept__logo"
     />
@@ -60,7 +60,7 @@ import logo from '../assets/logo.png';
   }
   .concept__logo {
     width: 100%;
-    max-width: 480px;
+    max-width: 400px;
     height: auto;
     margin-inline: auto;
   }
