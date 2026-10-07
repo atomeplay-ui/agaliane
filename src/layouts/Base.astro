@@ -7,7 +7,9 @@ import { getImage } from 'astro:assets';
 import logo from '../assets/logo.png';
 import { site } from '../data/site.js';
 
-const { titre = site.titre } = Astro.props;
+const { titre = site.titre, description = site.description } = Astro.props;
+// Adresse complète de la page sur agaliane.fr, sans barre finale (comme Vercel les sert).
+const adresse = new URL(Astro.url.pathname.replace(/(.)\/$/, '$1'), Astro.site);
 
 const favicon = await getImage({ src: logo, width: 96, height: 96, format: 'png' });
 const apercu = await getImage({ src: logo, width: 600, height: 600, format: 'png' }); // aperçu lors d'un partage de lien
@@ -19,10 +21,14 @@ const apercu = await getImage({ src: logo, width: 600, height: 600, format: 'png
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{titre}</title>
-    <meta name="description" content={site.description} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={adresse} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={adresse} />
     <meta property="og:title" content={titre} />
-    <meta property="og:description" content={site.description} />
-    <meta property="og:image" content={apercu.src} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(apercu.src, Astro.site)} />
+    <slot name="head" />
     <link rel="icon" type="image/png" href={favicon.src} />
   </head>
   <body>

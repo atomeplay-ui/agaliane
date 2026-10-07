@@ -8,7 +8,10 @@ import { site, legal } from '../data/site.js';
 const { titre } = Astro.props;
 ---
 
-<Base titre={`${titre} — ${site.nom}`}>
+<Base
+  titre={`${titre} — ${site.nom}`}
+  description={`${titre} du site ${site.nom}, boutique-atelier de bijoux fantaisie à Nîmes.`}
+>
   <Header />
   <main class="section">
     <article class="container legal">

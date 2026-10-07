@@ -32,13 +32,13 @@ export const legal = {
   paiement: 'Le paiement s’effectue sur place, à la boutique, le jour de l’atelier.',
   annulation: 'L’annulation est gratuite jusqu’à 48 heures avant le début de l’atelier, par téléphone ou par e-mail.',
   mediateur: '[À COMPLÉTER : nom, adresse et site internet du médiateur de la consommation]',
-  miseAJour: '5 octobre 2026',
+  miseAJour: '7 octobre 2026',
 };
 
-// Tarifs des ateliers de création.
+// Tarifs des ateliers créatifs.
 export const tarifs = [
   {
-    titre: 'Perles fantaisies',
+    titre: 'Perles fantaisie',
     groupes: [
       {
         nom: 'Collier',

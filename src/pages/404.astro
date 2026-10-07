@@ -1,0 +1,21 @@
+---
+// Page affichée pour une adresse qui n'existe pas.
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site.js';
+---
+
+<Base titre={`Page introuvable — ${site.nom}`}>
+  <meta name="robots" content="noindex" slot="head" />
+  <Header />
+  <main class="section">
+    <div class="container centre">
+      <p class="surtitre">Erreur 404</p>
+      <h1>Cette page n’existe pas</h1>
+      <p>L’adresse est peut-être incorrecte, ou la page a été déplacée.</p>
+      <p><a href="/" class="btn">Retour à l’accueil</a></p>
+    </div>
+  </main>
+  <Footer />
+</Base>

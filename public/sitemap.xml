@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Liste des pages pour Google. À compléter à la main si une page est ajoutée. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://agaliane.fr/</loc></url>
+  <url><loc>https://agaliane.fr/mentions-legales</loc></url>
+  <url><loc>https://agaliane.fr/confidentialite</loc></url>
+  <url><loc>https://agaliane.fr/conditions</loc></url>
+</urlset>
