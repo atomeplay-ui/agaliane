@@ -2,6 +2,14 @@
 import { Image } from 'astro:assets';
 import logo from '../assets/logo-simple.jpg';
 import { site } from '../data/site.js';
+
+const liens = [
+  { href: '/#prestations', texte: 'Prestations' },
+  { href: '/#concept', texte: 'Le concept' },
+  { href: '/#deroule', texte: 'Déroulé' },
+  { href: '/#tarifs', texte: 'Tarifs' },
+  { href: '/#infos', texte: 'Infos pratiques' },
+];
 ---
 
 <header class="header">
@@ -10,15 +18,29 @@ import { site } from '../data/site.js';
       <Image src={logo} alt={site.nom} width={186} densities={[1, 2]} loading="eager" />
     </a>
     <nav class="header__nav" aria-label="Navigation principale">
-      <a href="/#prestations">Prestations</a>
-      <a href="/#concept">Le concept</a>
-      <a href="/#deroule">Déroulé</a>
-      <a href="/#tarifs">Tarifs</a>
-      <a href="/#infos">Infos pratiques</a>
+      {liens.map((l) => <a href={l.href}>{l.texte}</a>)}
       <a href="/#reservation" class="btn btn--small">Réserver</a>
+      <button type="button" class="header__menu-btn" popovertarget="menu-mobile" aria-label="Ouvrir le menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
+      </button>
     </nav>
   </div>
 </header>
+
+<!-- Menu téléphone : panneau natif (popover) qui monte depuis le bas de l'écran. -->
+<nav class="menu-mobile" id="menu-mobile" popover aria-label="Menu">
+  <button type="button" class="menu-mobile__poignee" popovertarget="menu-mobile" aria-label="Fermer le menu"></button>
+  {liens.map((l) => <a href={l.href}>{l.texte}</a>)}
+  <a href="/#reservation" class="btn">Réserver un créneau</a>
+  <a href={site.telephoneLien} class="btn btn--contour">{site.telephone}</a>
+</nav>
+
+<script is:inline>
+  // Referme le menu quand on choisit un lien.
+  document.getElementById('menu-mobile').addEventListener('click', (e) => {
+    if (e.target.closest('a')) e.currentTarget.hidePopover();
+  });
+</script>
 
 <style>
   .header {
@@ -56,9 +78,86 @@ import { site } from '../data/site.js';
   .header__nav a:not(.btn):hover {
     color: var(--accent);
   }
+  .header__menu-btn {
+    display: none;
+    padding: 0.4rem;
+    border: 1px solid var(--bordure);
+    border-radius: 6px;
+    background: none;
+    cursor: pointer;
+  }
+  .header__menu-btn svg {
+    display: block;
+    width: 26px;
+    height: 26px;
+    fill: none;
+    stroke: var(--brun);
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+
+  .menu-mobile {
+    /* annule le centrage par défaut des popovers : collé en bas, pleine largeur */
+    inset: auto 0 0 0;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0.75rem 1.5rem 2rem;
+    border: 0;
+    border-radius: 18px 18px 0 0;
+    background: var(--blanc);
+    box-shadow: 0 -8px 30px rgb(0 0 0 / 0.15);
+    text-align: center;
+    translate: 0 100%;
+    transition:
+      translate 0.3s ease,
+      display 0.3s allow-discrete,
+      overlay 0.3s allow-discrete;
+  }
+  .menu-mobile:popover-open {
+    display: grid;
+    gap: 0.25rem;
+    translate: 0 0;
+  }
+  @starting-style {
+    .menu-mobile:popover-open {
+      translate: 0 100%;
+    }
+  }
+  .menu-mobile::backdrop {
+    background: rgb(0 0 0 / 0.4);
+  }
+  .menu-mobile__poignee {
+    justify-self: center;
+    width: 48px;
+    height: 5px;
+    margin-bottom: 0.75rem;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: var(--bordure);
+    cursor: pointer;
+  }
+  .menu-mobile a:not(.btn) {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--bordure);
+    color: var(--texte-fort);
+    font-size: 1.15rem;
+    text-decoration: none;
+  }
+  .menu-mobile .btn {
+    margin-top: 0.75rem;
+  }
+
   @media (max-width: 640px) {
+    .header__nav {
+      gap: 0.5rem 0.75rem;
+    }
     .header__nav a:not(.btn) {
       display: none;
+    }
+    .header__menu-btn {
+      display: block;
     }
     .header__logo img {
       height: 56px;
