@@ -4,7 +4,7 @@ export const site = {
   nom: 'Agaliane',
   titre: 'Agaliane — Bijoux fantaisie et ateliers créatifs à Nîmes',
   description:
-    'Boutique-atelier à Nîmes : vente de bijoux fantaisie, perles et accessoires, réparation et rachat, ateliers créatifs sur rendez-vous avec vos propres pendentifs.',
+    'Boutique-atelier à Nîmes : vente de bijoux fantaisie, perles et accessoires, réparation et rachat, ateliers créatifs sur rendez-vous.',
 
   telephone: '06 32 27 95 29',
   telephoneLien: 'tel:+33632279529',

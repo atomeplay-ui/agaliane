@@ -12,7 +12,7 @@ import { site, legal } from '../data/site.js';
   <h2>1. Prestations</h2>
   <p>
     Un atelier dure {site.duree} et se déroule à la boutique, sur rendez-vous. Le participant y crée un bijou, avec
-    les fournitures proposées par {site.nom} et, s’il le souhaite, ses propres pendentifs.
+    les fournitures proposées par {site.nom}.
   </p>
 
   <h2>2. Prix</h2>
@@ -41,20 +41,13 @@ import { site, legal } from '../data/site.js';
     donc pas du délai de rétractation de 14 jours.
   </p>
 
-  <h2>7. Objets apportés par le participant</h2>
-  <p>
-    Les pendentifs et bijoux apportés par le participant restent sa propriété et sous sa responsabilité.
-    {site.nom} veille à les manipuler avec soin mais ne peut être tenue responsable de leur usure ou de leur fragilité
-    préexistante.
-  </p>
-
-  <h2>8. Médiation de la consommation</h2>
+  <h2>7. Médiation de la consommation</h2>
   <p>
     En cas de litige, le client peut d’abord contacter {site.nom} à <a href={`mailto:${site.email}`}>{site.email}</a>.
     À défaut de solution amiable, il peut recourir gratuitement au médiateur de la consommation suivant :
     {legal.mediateur}.
   </p>
 
-  <h2>9. Données personnelles</h2>
+  <h2>8. Données personnelles</h2>
   <p>Voir notre <a href="/confidentialite">politique de confidentialité</a>.</p>
 </Legal>
