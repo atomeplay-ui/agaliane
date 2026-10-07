@@ -11,6 +11,9 @@ import { site, calcom } from '../data/site.js';
     <p class="centre">
       <a href={site.telephoneLien} class="btn">{site.telephone}</a>
     </p>
+    <p class="centre">
+      Vous êtes 4 ou plus ? <a href="#demande">Demandez une ouverture exceptionnelle de l’atelier</a>.
+    </p>
     <!-- Widget Cal.com. Config dans src/data/site.js. Le chargeur ci-dessous est le code fourni par Cal.com. -->
     <div class="reservation__widget" id="cal-inline"></div>
     <script is:inline define:vars={{ calcom }}>

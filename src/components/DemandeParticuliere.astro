@@ -7,13 +7,19 @@ const types = ['Anniversaire', 'EVJF / EVG', 'Entre amis', 'En famille', 'Entrep
 const civilites = ['Monsieur', 'Madame', 'Mx'];
 ---
 
-<details class="demande">
-  <summary class="btn btn--contour">Faire une demande particulière</summary>
+<aside class="demande" id="demande">
+  <p class="surtitre">À partir de 4 personnes</p>
+  <h3>Ouverture exceptionnelle pour votre groupe</h3>
+  <p>
+    Choisissez le jour et l’horaire qui vous conviennent et faites votre demande d’ouverture exceptionnelle. Après
+    validation, nous ouvrirons l’atelier spécialement pour vous et votre groupe, en dehors de nos horaires habituels.
+  </p>
+  <p class="demande__accroche">Vous choisissez le jour, l’heure… nous nous occupons du reste !</p>
+
+  <details>
+  <summary class="btn">Faire une demande particulière</summary>
 
   <form class="demande__form" id="demande-form" data-email={site.email}>
-    <p class="demande__intro">
-      Groupe nombreux, anniversaire, événement d’entreprise… Décrivez votre projet, nous vous recontactons.
-    </p>
 
     <fieldset>
       <legend>Information concernant la demande</legend>
@@ -69,7 +75,8 @@ const civilites = ['Monsieur', 'Madame', 'Mx'];
       uniquement à répondre à votre demande (<a href="/confidentialite">confidentialité</a>).
     </p>
   </form>
-</details>
+  </details>
+</aside>
 
 <script is:inline>
   // ponytail: envoi par mailto (aucun serveur). Limite : demande que le visiteur ait une messagerie configurée.
@@ -85,8 +92,21 @@ const civilites = ['Monsieur', 'Madame', 'Mx'];
 
 <style>
   .demande {
-    margin-top: 2.5rem;
+    max-width: 720px;
+    margin: 2.5rem auto 0;
+    padding: clamp(1.25rem, 4vw, 2rem);
+    background: var(--blanc);
+    border: 1px solid var(--bordure);
+    border-radius: 12px;
     text-align: center;
+  }
+  .demande h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.4rem;
+  }
+  .demande__accroche {
+    font-style: italic;
+    color: var(--accent);
   }
   .demande summary {
     cursor: pointer;
@@ -96,15 +116,8 @@ const civilites = ['Monsieur', 'Madame', 'Mx'];
     display: none;
   }
   .demande__form {
-    max-width: 640px;
-    margin: 2rem auto 0;
-    padding: clamp(1.25rem, 4vw, 2rem);
-    background: var(--blanc);
-    border-radius: 12px;
+    margin-top: 2rem;
     text-align: left;
-  }
-  .demande__intro {
-    margin-top: 0;
   }
   fieldset {
     border: 0;
