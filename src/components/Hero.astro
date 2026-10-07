@@ -1,49 +1,30 @@
 ---
-import { Image } from 'astro:assets';
-import boucles from '../assets/hero-boucles.png';
 import { site } from '../data/site.js';
 ---
 
 <section class="hero" id="top">
   <div class="container hero__inner">
-    <div>
-      <p class="surtitre">{site.adresse} · {site.ville}</p>
-      <h1>
-        Notre concept : l’upcycling
-        <span class="hero__devise">Rien ne se perd, tout se transforme…</span>
-      </h1>
-      <p class="hero__texte">Réservez un créneau à la boutique, composez votre pièce unique.</p>
-      <div class="hero__actions">
-        <a href="#reservation" class="btn">Réserver un créneau</a>
-        <a href={site.telephoneLien} class="btn btn--contour">{site.telephone}</a>
-      </div>
+    <p class="surtitre">{site.adresse} · {site.ville}</p>
+    <h1>
+      Notre concept : l’upcycling
+      <span class="hero__devise">Rien ne se perd, tout se transforme…</span>
+    </h1>
+    <p class="hero__texte">Réservez un créneau à la boutique, composez votre pièce unique.</p>
+    <div class="hero__actions">
+      <a href="#reservation" class="btn">Réserver un créneau</a>
+      <a href={site.telephoneLien} class="btn btn--contour">{site.telephone}</a>
     </div>
-    <!-- Affichée à 340 px max : au-delà, l'image source (680 px) deviendrait floue sur écran Retina. -->
-    <Image
-      src={boucles}
-      alt="Boucles d’oreilles clip dorées serties de pierres colorées"
-      width={340}
-      densities={[1, 2]}
-      loading="eager"
-      class="hero__image"
-    />
   </div>
 </section>
 
 <style>
   .hero {
-    /* #fcfcfc = fond de la photo des boucles */
     background: #fcfcfc;
   }
   .hero__inner {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: 2rem;
     padding-block: clamp(3rem, 8vw, 6rem);
   }
   .hero h1 {
-    max-width: 16ch;
     font-size: clamp(2.2rem, 5.5vw, 4rem);
     line-height: 1.1;
     margin: 0 0 1.5rem;
@@ -51,7 +32,6 @@ import { site } from '../data/site.js';
   .hero__devise {
     display: block;
     margin-top: 0.75rem;
-    max-width: none;
     font-size: 0.5em;
     font-style: italic;
     font-weight: 400;
@@ -66,18 +46,5 @@ import { site } from '../data/site.js';
     flex-wrap: wrap;
     gap: 1rem;
     margin-top: 2rem;
-  }
-  .hero__image {
-    width: min(340px, 30vw);
-    height: auto;
-  }
-  /* Sur téléphone : texte seul, comme la première version */
-  @media (max-width: 700px) {
-    .hero__inner {
-      grid-template-columns: 1fr;
-    }
-    .hero__image {
-      display: none;
-    }
   }
 </style>
