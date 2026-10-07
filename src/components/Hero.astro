@@ -7,11 +7,12 @@ import { site } from '../data/site.js';
 <section class="hero" id="top">
   <div class="container hero__inner">
     <div>
-      <p class="surtitre">Atelier de bijoux · Nîmes</p>
-      <h1>Créez votre bijou, de vos propres mains</h1>
-      <p class="hero__texte">
-        Réservez un créneau à la boutique, composez votre pièce unique et ajoutez-y vos propres pendentifs.
-      </p>
+      <p class="surtitre">{site.adresse} · {site.ville}</p>
+      <h1>
+        Notre concept : l’upcycling
+        <span class="hero__devise">Rien ne se perd, tout se transforme…</span>
+      </h1>
+      <p class="hero__texte">Réservez un créneau à la boutique, composez votre pièce unique.</p>
       <div class="hero__actions">
         <a href="#reservation" class="btn">Réserver un créneau</a>
         <a href={site.telephoneLien} class="btn btn--contour">{site.telephone}</a>
@@ -42,10 +43,19 @@ import { site } from '../data/site.js';
     padding-block: clamp(3rem, 8vw, 6rem);
   }
   .hero h1 {
-    max-width: 14ch;
-    font-size: clamp(2.4rem, 6vw, 4.4rem);
+    max-width: 16ch;
+    font-size: clamp(2.2rem, 5.5vw, 4rem);
     line-height: 1.1;
     margin: 0 0 1.5rem;
+  }
+  .hero__devise {
+    display: block;
+    margin-top: 0.75rem;
+    max-width: none;
+    font-size: 0.5em;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
   }
   .hero__texte {
     max-width: 38ch;
