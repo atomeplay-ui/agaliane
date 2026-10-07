@@ -82,6 +82,14 @@ import { site, tarifs } from '../data/site.js';
     border-bottom: 1px dotted var(--terracotta);
     font-style: italic;
   }
+  /* Même puce losange que dans la section « Le concept » */
+  .tarifs__carte li span:first-child::before {
+    content: '◆';
+    color: var(--decor);
+    margin-right: 0.6rem;
+    font-size: 0.7em;
+    font-style: normal;
+  }
   .tarifs__prix {
     font-style: normal;
     font-weight: 700;
