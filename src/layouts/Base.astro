@@ -27,5 +27,23 @@ const apercu = await getImage({ src: logo, width: 600, height: 600, format: 'png
   </head>
   <body>
     <slot />
+    <script is:inline>
+      // Apparition au défilement (styles : bloc « Animations » de src/styles/global.css).
+      const vu = new IntersectionObserver(
+        (entrees) =>
+          entrees.forEach((e) => {
+            if (!e.isIntersecting) return;
+            e.target.classList.add('visible');
+            vu.unobserve(e.target);
+          }),
+        { threshold: 0.1 }
+      );
+      document
+        .querySelectorAll('main .section .container > :not(script), .prestations li, .etapes li, .tarifs__carte')
+        .forEach((el) => {
+          el.classList.add('anime');
+          vu.observe(el);
+        });
+    </script>
   </body>
 </html>

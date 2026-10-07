@@ -120,3 +120,41 @@ a {
 .btn--small {
   padding: 0.5rem 1rem;
 }
+
+/* ---------- Animations ----------
+   Désactivées pour les visiteurs qui ont demandé « réduire les animations » dans leur appareil.
+   Pour tout couper : supprimer ce bloc (et le script de src/layouts/Base.astro). */
+@media (prefers-reduced-motion: no-preference) {
+  /* Apparition au défilement : la classe .anime est posée par le script de Base.astro,
+     .visible quand l'élément entre dans l'écran. Sans JavaScript, tout reste visible. */
+  .anime {
+    opacity: 0;
+    translate: 0 24px;
+    transition:
+      opacity 0.6s ease,
+      translate 0.6s ease;
+  }
+  .anime.visible {
+    opacity: 1;
+    translate: none;
+  }
+  /* Les éléments côte à côte (prestations, étapes, cartes de tarifs) arrivent l'un après l'autre */
+  .anime:is(li, article):nth-child(2) {
+    transition-delay: 0.12s;
+  }
+  .anime:is(li, article):nth-child(3) {
+    transition-delay: 0.24s;
+  }
+
+  /* Les boutons se soulèvent légèrement au survol */
+  .btn {
+    transition:
+      background 0.2s,
+      border-color 0.2s,
+      color 0.2s,
+      translate 0.2s;
+  }
+  .btn:hover {
+    translate: 0 -2px;
+  }
+}
