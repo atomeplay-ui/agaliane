@@ -14,19 +14,38 @@ import logo from '../assets/logo.png';
     />
     <div>
       <p class="surtitre">Le concept</p>
-      <h2>Un atelier pour fabriquer vos bijoux</h2>
+      <h2>Agaliane — l’univers du bijou fantaisie, à créer, à porter, à faire revivre</h2>
       <p>
-        Agaliane, c’est une boutique-atelier où vous venez, sur rendez-vous, créer vous-même vos bijoux. Nous sommes des
-        créatrices françaises passionnées et nous vous accompagnons à chaque étape, que vous soyez débutant ou habitué.
-      </p>
-      <p>
-        Vous avez un pendentif qui dort dans un tiroir, une breloque de famille, un souvenir de voyage ? Apportez-le :
-        nous l’intégrons à votre création pour lui offrir une seconde vie.
+        Chez Agaliane, nous avons imaginé un lieu où chaque bijou raconte une histoire, où vous pouvez laisser parler
+        votre créativité et donner une seconde vie à chaque élément.
       </p>
       <ul class="concept__liste">
-        <li>Sur rendez-vous, à votre rythme</li>
-        <li>Vos propres pendentifs sont les bienvenus</li>
-        <li>Vous repartez avec une pièce unique</li>
+        <li>
+          <h3>Bijoux, perles & accessoires</h3>
+          <p>
+            Découvrez une sélection de bijoux fantaisie, perles et accessoires pour toutes vos envies. Des pièces
+            tendance, délicates ou originales pour vous faire plaisir ou trouver le cadeau parfait.
+          </p>
+        </li>
+        <li>
+          <h3>Réparation & rachat de bijoux fantaisie</h3>
+          <p>
+            Votre bijou préféré est cassé ou a besoin d’une petite remise en beauté ? Nous vous proposons un service de
+            réparation de bijoux fantaisie pour leur permettre de retrouver une seconde vie.
+          </p>
+          <p>
+            Nous proposons également le rachat de vos bijoux fantaisie, pour transformer ce que vous ne portez plus en
+            une nouvelle opportunité pour notre boutique.
+          </p>
+        </li>
+        <li>
+          <h3>Ateliers créatifs — créez votre bijou</h3>
+          <p>
+            Et si votre prochain bijou était créé par vous ? Participez à nos ateliers créatifs et imaginez votre propre
+            bijou, accompagné(e) pas à pas. Choisissez vos perles, vos couleurs et vos associations pour créer une pièce
+            unique, qui vous ressemble.
+          </p>
+        </li>
       </ul>
     </div>
   </div>
@@ -56,14 +75,20 @@ import logo from '../assets/logo.png';
     margin: 1.5rem 0 0;
   }
   .concept__liste li {
-    padding: 0.6rem 0;
+    padding: 1.1rem 0;
     border-top: 1px solid var(--bordure);
-    color: var(--texte-fort);
   }
-  .concept__liste li::before {
+  .concept__liste h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1.15rem;
+  }
+  .concept__liste h3::before {
     content: '◆';
     color: var(--decor);
-    margin-right: 0.75rem;
+    margin-right: 0.6rem;
     font-size: 0.7em;
+  }
+  .concept__liste p {
+    margin: 0.4rem 0 0;
   }
 </style>
