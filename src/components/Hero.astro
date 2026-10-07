@@ -48,6 +48,19 @@ import { site } from '../data/site.js';
     margin-top: 2rem;
   }
 
+  /* Grand écran : bloc centré (aligné à gauche sur téléphone) */
+  @media (min-width: 701px) {
+    .hero__inner {
+      text-align: center;
+    }
+    .hero__texte {
+      margin-inline: auto;
+    }
+    .hero__actions {
+      justify-content: center;
+    }
+  }
+
   /* À l'ouverture du site : les lignes de l'accueil apparaissent l'une après l'autre */
   @media (prefers-reduced-motion: no-preference) {
     .hero__inner > * {
