@@ -63,6 +63,6 @@ export const tarifs = [
 // Widget de réservation Cal.com.
 // "lien" = identifiant-cal.com/nom-de-l-evenement.
 export const calcom = {
-  lien: 'agaliane/ateliers-creatif',
+  lien: 'agaliane/atelier-creatif',
   couleur: '#8b5a3c', // terracotta, cf. src/styles/global.css
 };
