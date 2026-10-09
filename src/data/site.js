@@ -9,6 +9,8 @@ export const site = {
   telephone: '06 32 27 95 29',
   telephoneLien: 'tel:+33632279529',
   email: 'contact@agaliane.fr',
+  // Clé Web3Forms du formulaire « demande particulière » (publique par nature : elle ne permet que d'envoyer vers ta boîte).
+  web3formsCle: '24cbf03b-585b-4d45-839f-c9d7db79ff00',
 
   adresse: '7 rue Sainte-Eugénie',
   ville: '30000 Nîmes',

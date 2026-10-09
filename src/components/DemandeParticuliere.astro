@@ -19,7 +19,13 @@ const civilites = ['Monsieur', 'Madame', 'Mx'];
   <details>
   <summary class="btn">Faire une demande particulière</summary>
 
-  <form class="demande__form" id="demande-form" data-email={site.email}>
+  <form class="demande__form" id="demande-form">
+    <!-- Réglages Web3Forms (service qui transmet le formulaire par e-mail) -->
+    <input type="hidden" name="access_key" value={site.web3formsCle} />
+    <input type="hidden" name="subject" value="Demande particulière — atelier" />
+    <input type="hidden" name="from_name" value={`Site ${site.nom}`} />
+    <!-- Piège à robots : invisible, un humain ne la coche jamais -->
+    <input type="checkbox" name="botcheck" hidden tabindex="-1" autocomplete="off" />
 
     <fieldset>
       <legend>Information concernant la demande</legend>
@@ -65,28 +71,42 @@ const civilites = ['Monsieur', 'Madame', 'Mx'];
         <label>Prénom <input type="text" name="Prénom" autocomplete="given-name" required /></label>
         <label>Nom <input type="text" name="Nom" autocomplete="family-name" required /></label>
         <label>Mobile <input type="tel" name="Mobile" autocomplete="tel" placeholder="06 12 34 56 78" required /></label>
-        <label>E-mail <input type="email" name="E-mail" autocomplete="email" required /></label>
+        <!-- "email" : nom attendu par Web3Forms pour que « Répondre » écrive au visiteur -->
+        <label>E-mail <input type="email" name="email" autocomplete="email" required /></label>
       </div>
     </fieldset>
 
     <button type="submit" class="btn">Envoyer la demande</button>
+    <p class="demande__etat" id="demande-etat" role="status"></p>
     <p class="demande__note">
-      L’envoi ouvre votre messagerie avec la demande pré-remplie : il vous reste à l’envoyer. Vos informations servent
-      uniquement à répondre à votre demande (<a href="/confidentialite">confidentialité</a>).
+      Vos informations servent uniquement à répondre à votre demande (<a href="/confidentialite">confidentialité</a>).
     </p>
   </form>
   </details>
 </aside>
 
-<script is:inline>
-  // ponytail: envoi par mailto (aucun serveur). Limite : demande que le visiteur ait une messagerie configurée.
-  // Passer à un service de formulaire (ex. Web3Forms) si des demandes se perdent.
+<script is:inline define:vars={{ telephone: site.telephone }}>
   const form = document.getElementById('demande-form');
+  const etat = document.getElementById('demande-etat');
+  const bouton = form.querySelector('button[type="submit"]');
   form.elements['Date'].min = new Date().toISOString().slice(0, 10);
-  form.addEventListener('submit', (e) => {
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const lignes = [...new FormData(form)].filter(([, v]) => v).map(([k, v]) => `${k} : ${v}`);
-    location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent('Demande particulière — atelier')}&body=${encodeURIComponent(lignes.join('\n'))}`;
+    bouton.disabled = true;
+    etat.textContent = 'Envoi en cours…';
+    // On n'envoie que les champs remplis, pour un e-mail lisible.
+    const donnees = new FormData();
+    for (const [cle, valeur] of new FormData(form)) if (valeur) donnees.append(cle, valeur);
+    try {
+      const reponse = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: donnees });
+      if (!(await reponse.json()).success) throw new Error();
+      form.reset();
+      etat.textContent = 'Merci ! Votre demande a bien été envoyée, nous vous recontactons rapidement.';
+    } catch {
+      etat.textContent = `L’envoi n’a pas fonctionné. Réessayez, ou appelez-nous au ${telephone}.`;
+    }
+    bouton.disabled = false;
   });
 </script>
 
@@ -188,6 +208,18 @@ const civilites = ['Monsieur', 'Madame', 'Mx'];
   .demande__form .btn {
     cursor: pointer;
     font-family: inherit;
+  }
+  .demande__etat {
+    margin: 1rem 0 0;
+    font-weight: 700;
+    color: var(--texte-fort);
+  }
+  .demande__etat:empty {
+    display: none;
+  }
+  .demande__form .btn:disabled {
+    opacity: 0.6;
+    cursor: wait;
   }
   .demande__note {
     margin: 1rem 0 0;
