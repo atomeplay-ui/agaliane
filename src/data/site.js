@@ -22,19 +22,20 @@ export const site = {
 };
 
 // Informations légales (pages Mentions légales, Confidentialité, Conditions de réservation).
-// Tout ce qui commence par « [À COMPLÉTER » s'affiche tel quel sur le site : à remplacer.
+// Tout ce qui commence par « [À COMPLÉTER » s'affiche tel quel sur le site : à remplacer (reste : médiateur).
 export const legal = {
-  raisonSociale: '[À COMPLÉTER : nom de l’entreprise ou nom et prénom de l’entrepreneur]',
-  formeJuridique: '[À COMPLÉTER : ex. entreprise individuelle (micro-entreprise), SAS, SARL…]',
-  capital: '', // ex. 'Capital social : 1 000 €' — laisser vide pour une entreprise individuelle
-  siret: '[À COMPLÉTER : n° SIRET]',
-  rcs: '', // ex. 'RCS Nîmes 123 456 789' ou 'RNE' — selon l'immatriculation
-  tva: '[À COMPLÉTER : n° de TVA intracommunautaire, ou « TVA non applicable, art. 293 B du CGI »]',
-  directeurPublication: '[À COMPLÉTER : nom et prénom]',
+  // Source : fiche Pappers de l'entreprise (SIREN 898 473 327).
+  raisonSociale: 'Agathe Jean EI, exerçant sous le nom commercial Agaliane',
+  formeJuridique: 'Entrepreneur individuel',
+  capital: '', // sans objet pour un entrepreneur individuel
+  siret: '898 473 327 00028',
+  rcs: 'RCS Nîmes 898 473 327',
+  tva: 'FR95898473327',
+  directeurPublication: 'Agathe Jean',
   paiement: 'Le paiement s’effectue sur place, à la boutique, le jour de l’atelier.',
   annulation: 'L’annulation est gratuite jusqu’à 48 heures avant le début de l’atelier, par téléphone ou par e-mail.',
   mediateur: '[À COMPLÉTER : nom, adresse et site internet du médiateur de la consommation]',
-  miseAJour: '7 octobre 2026',
+  miseAJour: '15 octobre 2026',
 };
 
 // Tarifs des ateliers créatifs.
