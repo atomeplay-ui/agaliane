@@ -44,8 +44,14 @@ import { site, legal } from '../data/site.js';
   <h2>7. Médiation de la consommation</h2>
   <p>
     En cas de litige, le client peut d’abord contacter {site.nom} à <a href={`mailto:${site.email}`}>{site.email}</a>.
-    À défaut de solution amiable, il peut recourir gratuitement au médiateur de la consommation suivant :
-    {legal.mediateur}.
+    À défaut de solution amiable, et conformément à l’article L612-1 du Code de la consommation, il peut recourir
+    gratuitement au médiateur de la consommation suivant :
+  </p>
+  <p>
+    <strong>{legal.mediateur.nom}</strong><br />
+    {legal.mediateur.adresse}<br />
+    En ligne : <a href={legal.mediateur.saisine} target="_blank" rel="noopener">déclarer un litige sur cm2c.net</a><br />
+    Par e-mail : <a href={`mailto:${legal.mediateur.email}`}>{legal.mediateur.email}</a>
   </p>
 
   <h2>8. Données personnelles</h2>

@@ -22,7 +22,7 @@ export const site = {
 };
 
 // Informations légales (pages Mentions légales, Confidentialité, Conditions de réservation).
-// Tout ce qui commence par « [À COMPLÉTER » s'affiche tel quel sur le site : à remplacer (reste : médiateur).
+// Tout ce qui commence par « [À COMPLÉTER » s'affiche tel quel sur le site : à remplacer.
 export const legal = {
   // Source : fiche Pappers de l'entreprise (SIREN 898 473 327).
   raisonSociale: 'Agathe Jean EI, exerçant sous le nom commercial Agaliane',
@@ -34,8 +34,14 @@ export const legal = {
   directeurPublication: 'Agathe Jean',
   paiement: 'Le paiement s’effectue sur place, à la boutique, le jour de l’atelier.',
   annulation: 'L’annulation est gratuite jusqu’à 48 heures avant le début de l’atelier, par téléphone ou par e-mail.',
-  mediateur: '[À COMPLÉTER : nom, adresse et site internet du médiateur de la consommation]',
-  miseAJour: '15 octobre 2026',
+  // Médiateur de la consommation (coordonnées relevées sur cm2c.net le 16/10/2026).
+  mediateur: {
+    nom: 'CM2C — Centre de la médiation de la consommation de conciliateurs de justice',
+    adresse: '49 rue de Ponthieu, 75008 Paris',
+    email: 'declarer-un-litige@cm2c.net',
+    saisine: 'https://www.cm2c.net/declarer-un-litige.php',
+  },
+  miseAJour: '16 octobre 2026',
 };
 
 // Tarifs des ateliers créatifs.
