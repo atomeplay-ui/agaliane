@@ -26,11 +26,11 @@ export const site = {
 export const legal = {
   // Source : fiche Pappers de l'entreprise (SIREN 898 473 327).
   raisonSociale: 'Agathe Jean EI, exerçant sous le nom commercial Agaliane',
-  formeJuridique: 'Entrepreneur individuel',
+  formeJuridique: 'Entrepreneur individuel (micro-entreprise)',
   capital: '', // sans objet pour un entrepreneur individuel
   siret: '898 473 327 00028',
   rcs: 'RCS Nîmes 898 473 327',
-  tva: 'FR95898473327',
+  tva: 'TVA non applicable, art. 293 B du CGI', // micro-entreprise en franchise de TVA
   directeurPublication: 'Agathe Jean',
   paiement: 'Le paiement s’effectue sur place, à la boutique, le jour de l’atelier.',
   annulation: 'L’annulation est gratuite jusqu’à 48 heures avant le début de l’atelier, par téléphone ou par e-mail.',
