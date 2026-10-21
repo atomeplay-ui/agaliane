@@ -8,30 +8,73 @@ import Deroule from '../components/Deroule.astro';
 import Tarifs from '../components/Tarifs.astro';
 import Reservation from '../components/Reservation.astro';
 import Infos from '../components/Infos.astro';
+import Faq from '../components/Faq.astro';
 import Footer from '../components/Footer.astro';
-import { site } from '../data/site.js';
+import { getImage } from 'astro:assets';
+import logo from '../assets/logo.png';
+import { site, legal, faq } from '../data/site.js';
 
-// Fiche « commerce local » lue par Google (nom, adresse, téléphone). Ajouter les horaires quand ils seront connus.
-const commerce = {
-  '@context': 'https://schema.org',
-  '@type': 'JewelryStore',
-  name: site.nom,
-  description: site.description,
-  url: Astro.site,
-  telephone: site.telephoneLien.replace('tel:', ''),
-  email: site.email,
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: site.adresse,
-    postalCode: '30000',
-    addressLocality: 'Nîmes',
-    addressCountry: 'FR',
+const image = await getImage({ src: logo, width: 600, height: 600, format: 'png' });
+const atelier = (name, price) => ({
+  '@type': 'Offer',
+  price,
+  priceCurrency: 'EUR',
+  itemOffered: { '@type': 'Service', name: `Atelier créatif (${site.duree}) — ${name}` },
+});
+
+// Données lues par Google et les IA : fiche « commerce local » + questions fréquentes.
+// Ajouter `openingHours` quand les horaires seront connus, et `sameAs` (Instagram, Facebook, fiche Google…).
+const donnees = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'JewelryStore',
+    name: site.nom,
+    legalName: legal.raisonSociale,
+    description: site.description,
+    url: Astro.site,
+    image: new URL(image.src, Astro.site),
+    logo: new URL(image.src, Astro.site),
+    telephone: site.telephoneLien.replace('tel:', ''),
+    email: site.email,
+    priceRange: '19 € – 45 €',
+    currenciesAccepted: 'EUR',
+    hasMap: site.carte,
+    founder: { '@type': 'Person', name: legal.directeurPublication },
+    areaServed: ['Nîmes', 'Gard'],
+    knowsAbout: ['bijoux fantaisie', 'perles', 'upcycling', 'réparation de bijoux', 'rachat de bijoux', 'atelier création de bijoux'],
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: site.adresse,
+      postalCode: '30000',
+      addressLocality: 'Nîmes',
+      addressRegion: 'Occitanie',
+      addressCountry: 'FR',
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Ateliers créatifs de bijoux',
+      itemListElement: [
+        atelier('collier ras de cou en perles fantaisie', 25),
+        atelier('collier standard en perles fantaisie', 35),
+        atelier('sautoir en perles fantaisie', 45),
+        atelier('bracelet ou boucles d’oreilles en perles fantaisie', 25),
+      ],
+    },
   },
-};
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map(({ q, r }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: r },
+    })),
+  },
+];
 ---
 
 <Base>
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify(commerce)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(donnees)} />
   <Header />
   <main>
     <Hero />
@@ -41,6 +84,7 @@ const commerce = {
     <Tarifs />
     <Reservation />
     <Infos />
+    <Faq />
   </main>
   <Footer />
 </Base>

@@ -1,0 +1,41 @@
+---
+// Questions fréquentes : lues par les visiteurs, Google et les IA (ChatGPT, Perplexity…).
+import { faq } from '../data/site.js';
+---
+
+<section class="section section--creme" id="faq">
+  <div class="container faq">
+    <p class="surtitre centre">Questions fréquentes</p>
+    <h2 class="centre">Vos questions</h2>
+    {
+      faq.map(({ q, r }) => (
+        <details>
+          <summary>{q}</summary>
+          <p>{r}</p>
+        </details>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .faq {
+    max-width: 760px;
+  }
+  .faq h2 {
+    margin-bottom: 2rem;
+  }
+  details {
+    border-top: 1px solid var(--bordure);
+    padding: 1rem 0;
+  }
+  summary {
+    cursor: pointer;
+    font-family: var(--police-titre);
+    font-size: 1.15rem;
+    color: var(--texte-fort);
+  }
+  details p {
+    margin: 0.75rem 0 0;
+  }
+</style>

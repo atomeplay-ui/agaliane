@@ -75,3 +75,32 @@ export const calcom = {
   lien: 'agaliane/atelier-creatif',
   couleur: '#8b5a3c', // terracotta, cf. src/styles/global.css
 };
+
+// Questions fréquentes (section « Vos questions » + données lues par Google et les IA).
+// Les prix sont écrits en toutes lettres : à garder en phase avec `tarifs` ci-dessus.
+export const faq = [
+  {
+    q: 'Où se trouve la boutique-atelier Agaliane ?',
+    r: `Au ${site.adresse}, ${site.ville}, dans le centre de Nîmes (Gard). Accueil ${site.horaires.charAt(0).toLowerCase()}${site.horaires.slice(1)}`,
+  },
+  {
+    q: 'Combien coûte un atelier de création de bijoux à Nîmes chez Agaliane ?',
+    r: `Un atelier dure ${site.duree}. En perles fantaisie : collier ras de cou 25 €, collier standard 35 €, sautoir 45 €, bracelet ou boucles d’oreilles 25 €. En perles semi-précieuses : à partir de 19 € plus le prix des perles.`,
+  },
+  {
+    q: 'Faut-il savoir faire des bijoux pour participer à un atelier ?',
+    r: 'Non : vous êtes accompagné(e) pas à pas. Vous choisissez chaînes, perles et apprêts, puis vous repartez avec votre bijou unique. Les ateliers se font seul, en duo ou entre amis.',
+  },
+  {
+    q: 'Comment réserver un atelier créatif ?',
+    r: `En ligne sur agaliane.fr (rubrique « Réserver ») ou par téléphone au ${site.telephone}. ${legal.annulation}`,
+  },
+  {
+    q: 'Agaliane répare-t-elle et rachète-t-elle les bijoux fantaisie ?',
+    r: 'Oui. La boutique répare les bijoux fantaisie abîmés et rachète ceux que vous ne portez plus, dans un esprit d’upcycling : rien ne se perd, tout se transforme.',
+  },
+  {
+    q: 'Que vend la boutique Agaliane ?',
+    r: 'Des bijoux fantaisie, des perles et des accessoires : des pièces tendance, délicates ou originales, pour se faire plaisir ou offrir.',
+  },
+];
