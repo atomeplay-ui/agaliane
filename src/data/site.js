@@ -65,7 +65,16 @@ export const tarifs = [
   },
   {
     titre: 'Perles semi-précieuses',
-    note: 'À partir de 19 € + le prix des perles',
+    groupes: [
+      {
+        nom: 'Collier',
+        lignes: [{ nom: 'Prix des perles', prix: '' }],
+      },
+      {
+        nom: 'Bracelet et boucles d’oreilles',
+        lignes: [{ nom: '19 € + le prix des perles', prix: '' }],
+      },
+    ],
   },
 ];
 
@@ -85,7 +94,7 @@ export const faq = [
   },
   {
     q: 'Combien coûte un atelier de création de bijoux à Nîmes chez Agaliane ?',
-    r: `Un atelier dure ${site.duree}. En perles fantaisie : collier ras de cou 25 €, collier standard 35 €, sautoir 45 €, bracelet ou boucles d’oreilles 25 €. En perles semi-précieuses : à partir de 19 € plus le prix des perles.`,
+    r: `Un atelier dure ${site.duree}. En perles fantaisie : collier ras de cou 25 €, collier standard 35 €, sautoir 45 €, bracelet ou boucles d’oreilles 25 €. En perles semi-précieuses : collier au prix des perles, bracelet ou boucles d’oreilles 19 € plus le prix des perles.`,
   },
   {
     q: 'Faut-il savoir faire des bijoux pour participer à un atelier ?',
