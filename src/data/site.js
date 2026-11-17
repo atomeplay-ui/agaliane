@@ -16,8 +16,8 @@ export const site = {
   ville: '30000 Nîmes',
   carte: 'https://www.google.com/maps/search/?api=1&query=7+rue+Sainte-Eug%C3%A9nie+30000+N%C3%AEmes',
 
-  // À COMPLÉTER : horaires réels.
-  horaires: 'Sur rendez-vous uniquement — horaires communiqués prochainement.',
+  // Créneaux d'atelier (à garder en phase avec Cal.com). Horaires de la boutique : à ajouter quand ils seront connus.
+  horaires: 'Ateliers sur réservation le mercredi et le jeudi, de 10 h à 18 h (créneaux de 2 h).',
   duree: '2 h',
 };
 
@@ -81,7 +81,7 @@ export const calcom = {
 export const faq = [
   {
     q: 'Où se trouve la boutique-atelier Agaliane ?',
-    r: `Au ${site.adresse}, ${site.ville}, dans le centre de Nîmes (Gard). Accueil ${site.horaires.charAt(0).toLowerCase()}${site.horaires.slice(1)}`,
+    r: `Au ${site.adresse}, ${site.ville}, dans le centre de Nîmes (Gard). ${site.horaires}`,
   },
   {
     q: 'Combien coûte un atelier de création de bijoux à Nîmes chez Agaliane ?',
