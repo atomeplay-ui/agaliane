@@ -23,7 +23,7 @@ const atelier = (name, price) => ({
 });
 
 // Données lues par Google et les IA : fiche « commerce local » + questions fréquentes.
-// Ajouter `openingHours` quand les horaires seront connus, et `sameAs` (Instagram, Facebook, fiche Google…).
+// Ajouter `sameAs` (Instagram, Facebook, fiche Google…).
 const donnees = [
   {
     '@context': 'https://schema.org',
@@ -38,6 +38,10 @@ const donnees = [
     email: site.email,
     priceRange: '19 € – 45 €',
     currenciesAccepted: 'EUR',
+    // Le samedi n'est ouvert qu'un samedi sur deux : non indiqué ici pour ne pas tromper Google.
+    openingHoursSpecification: site.horaires
+      .filter((h) => h.ouverture && !h.note)
+      .map((h) => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.en, opens: h.ouverture, closes: h.fermeture })),
     hasMap: site.carte,
     founder: { '@type': 'Person', name: legal.directeurPublication },
     areaServed: ['Nîmes', 'Gard'],

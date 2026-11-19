@@ -24,8 +24,19 @@ import { site } from '../data/site.js';
       </div>
       <div>
         <h3>Horaires</h3>
-        <p>{site.horaires}</p>
-        <p><a href="#tarifs">Voir les tarifs</a></p>
+        <table class="horaires">
+          {
+            site.horaires.map((h) => (
+              <tr>
+                <th scope="row">{h.jour}</th>
+                <td>
+                  {h.ouverture ? `${h.ouverture.replace(':', ' h ')} – ${h.fermeture.replace(':', ' h ')}`.replaceAll(' h 00', ' h') : 'Fermé'}
+                  {h.note && <small>{h.note}</small>}
+                </td>
+              </tr>
+            ))
+          }
+        </table>
       </div>
     </div>
   </div>
@@ -41,5 +52,26 @@ import { site } from '../data/site.js';
   }
   address {
     font-style: normal;
+  }
+  .horaires {
+    margin: 0 auto;
+    border-collapse: collapse;
+  }
+  .horaires th,
+  .horaires td {
+    padding: 0.2rem 0.6rem;
+    vertical-align: top;
+  }
+  .horaires th {
+    font-weight: 400;
+    text-align: left;
+  }
+  .horaires td {
+    text-align: right;
+    white-space: nowrap;
+  }
+  .horaires small {
+    display: block;
+    font-style: italic;
   }
 </style>

@@ -16,8 +16,17 @@ export const site = {
   ville: '30000 Nîmes',
   carte: 'https://www.google.com/maps/search/?api=1&query=7+rue+Sainte-Eug%C3%A9nie+30000+N%C3%AEmes',
 
-  // Créneaux d'atelier (à garder en phase avec Cal.com). Horaires de la boutique : à ajouter quand ils seront connus.
-  horaires: 'Ateliers sur réservation le mercredi et le jeudi, de 10 h à 18 h (créneaux de 2 h).',
+  // Horaires d'ouverture de la boutique (les créneaux d'atelier sont dans Cal.com).
+  // "ouverture"/"fermeture" au format 24 h ; laisser vides pour un jour fermé.
+  horaires: [
+    { jour: 'Lundi', en: 'Monday' },
+    { jour: 'Mardi', en: 'Tuesday', ouverture: '10:00', fermeture: '17:00' },
+    { jour: 'Mercredi', en: 'Wednesday', ouverture: '10:00', fermeture: '18:00' },
+    { jour: 'Jeudi', en: 'Thursday', ouverture: '10:00', fermeture: '18:00' },
+    { jour: 'Vendredi', en: 'Friday', ouverture: '10:00', fermeture: '17:00' },
+    { jour: 'Samedi', en: 'Saturday', ouverture: '10:00', fermeture: '17:00', note: '1er et 3e samedis du mois' },
+    { jour: 'Dimanche', en: 'Sunday' },
+  ],
   duree: '2 h',
 };
 
@@ -90,7 +99,7 @@ export const calcom = {
 export const faq = [
   {
     q: 'Où se trouve la boutique-atelier Agaliane ?',
-    r: `Au ${site.adresse}, ${site.ville}, dans le centre de Nîmes (Gard). ${site.horaires}`,
+    r: `Au ${site.adresse}, ${site.ville}, dans le centre de Nîmes (Gard). Ouverte du mardi au vendredi de 10 h à 17 h (18 h le mercredi et le jeudi), et les 1er et 3e samedis du mois de 10 h à 17 h.`,
   },
   {
     q: 'Combien coûte un atelier de création de bijoux à Nîmes chez Agaliane ?',
